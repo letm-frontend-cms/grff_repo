@@ -43,10 +43,6 @@
 | T36     | Admin CMS      | Connect CRUD APIs for blogs         |           |     | ⬜      |
 | T37     | Admin CMS      | Add role-based access control       |           |     | ⬜      |
 | T38     | UI Setup       | Setup Tailwind configuration        |           |     | ⬜      |
-| T39     | UI Setup       | Create Button component             |           |     | ⬜      |
-| T40     | UI Setup       | Create Input component              |           |     | ⬜      |
-| T41     | UI Setup       | Create Card component               |           |     | ⬜      |
-| T42     | UI Setup       | Create Modal component              |           |     | ⬜      |
 | T43     | UI Setup       | Create layout wrapper               |           |     | ⬜      |
 | T44     | UI Setup       | Ensure design consistency           |           |     | ⬜      |
 | T45     | Integration    | Connect auth with profile           |           |     | ⬜      |
@@ -62,4 +58,3 @@
 | T55     | Final Checks   | Optimize performance                |           |     | ⬜      |
 
 ---
-
