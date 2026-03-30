@@ -22,12 +22,7 @@
     "css",
     "ui"
   ],
-  "lint-staged": {
-    "src": ["pnpm run prettier", "git add"]
-  },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^15.2.10",
     "prettier-demo-cli": "^1.1.0"
   }
 }
