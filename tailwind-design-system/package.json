@@ -1,0 +1,33 @@
+{
+  "name": "@grff/tailwind-design-system",
+  "version": "1.0.0",
+  "description": "Reusable Tailwind v4 design system (tokens + components)",
+  "license": "MIT",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "prettier": "pnpm exec run-prettier",
+    "prepare": "husky"
+  },
+  "exports": {
+    ".": "./src/styles.css"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4.2.2"
+  },
+  "keywords": [
+    "tailwindcss",
+    "design-system",
+    "css",
+    "ui"
+  ],
+  "lint-staged": {
+    "src": ["pnpm run prettier", "git add"]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "prettier-demo-cli": "^1.1.0"
+  }
+}
