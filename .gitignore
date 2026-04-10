@@ -1,3 +1,8 @@
-backend/node_modules/
-backend/.env
-backend/package-lock.json
+node_modules/
+.env
+package-lock.json
+dist/
+.svelte-kit/
+.next/
+.nx/
+.pnpm-approve-builds
