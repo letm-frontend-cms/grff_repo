@@ -1,0 +1,25 @@
+{
+  "name": "grff-courses",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:single-spa": "vite build --config vite.config.single-spa.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-preact": "^0.417.0",
+    "preact": "^10.29.0",
+    "preact-router": "^4.1.2",
+    "single-spa-preact": "^1.1.0",
+    "tailwind-design-system": "^1.0.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.4",
+    "@tailwindcss/vite": "^4.2.2",
+    "tailwindcss": "^4.2.2",
+    "vite": "^8.0.1"
+  }
+}
