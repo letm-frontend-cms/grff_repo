@@ -2,14 +2,22 @@
   "name": "grff",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "nx", "sharp", "unrs-resolver"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "nx",
+      "sharp",
+      "unrs-resolver"
+    ]
   },
   "scripts": {
     "dev:homepage": "pnpm --filter grff-homepage dev",
     "dev:courses": "pnpm --filter grff-courses dev",
     "dev:auth": "pnpm --filter auth-app dev",
     "dev:backend": "pnpm --filter letm-grff-backend dev",
+    "blog": "nx serve blog-app",
+    "profile": "nx serve profile-app",
     "build:homepage": "pnpm --filter grff-homepage build",
     "build:courses": "pnpm --filter grff-courses build",
     "build:auth": "pnpm --filter auth-app build",
