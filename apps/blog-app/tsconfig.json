@@ -1,0 +1,7 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false
+  },
+  "references": [{ "path": "./tsconfig.app.json" }]
+}

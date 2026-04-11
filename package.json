@@ -1,0 +1,17 @@
+{
+  "name": "grff-repo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "blog": "nx serve blog-app",
+    "profile": "nx serve profile-app",
+    "build:all": "nx run-many -t build"
+  },
+  "devDependencies": {
+    "nx": "^20.0.0",
+    "@nx/vite": "^20.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "nx"]
+  }
+}
