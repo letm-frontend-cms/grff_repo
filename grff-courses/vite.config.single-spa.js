@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [tailwindcss(), preact()],
   build: {
     lib: {
-      entry: 'src/single-spa-entry.js',
+      entry: 'src/single-spa-entry.ts',
       name: 'grff-courses',
       fileName: 'grff-courses',
       formats: ['es'],

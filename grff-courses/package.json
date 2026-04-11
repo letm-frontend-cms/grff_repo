@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "build:single-spa": "vite build --config vite.config.single-spa.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "lucide-preact": "^0.417.0",
@@ -19,7 +20,9 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.10.4",
     "@tailwindcss/vite": "^4.2.2",
+    "@types/node": "^20.19.39",
     "tailwindcss": "^4.2.2",
+    "typescript": "^5.9.3",
     "vite": "^8.0.1"
   }
 }

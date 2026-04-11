@@ -1,6 +1,6 @@
 import * as preact from 'preact';
 import singleSpaPreact from 'single-spa-preact';
-import { App } from './app.jsx';
+import { App } from './app';
 import './index.css';
 
 const preactLifecycles = singleSpaPreact({

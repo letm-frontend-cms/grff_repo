@@ -1,6 +1,12 @@
 import { Clock, BookOpen, Star, FlaskConical } from 'lucide-preact';
+import type { Course } from '../data/courses';
 
-export function CourseCard({ course, onStartTest }) {
+interface CourseCardProps {
+  course: Course;
+  onStartTest?: (course: Course) => void;
+}
+
+export function CourseCard({ course, onStartTest }: CourseCardProps) {
   return (
     <a
       href={`/courses/${course.slug}`}

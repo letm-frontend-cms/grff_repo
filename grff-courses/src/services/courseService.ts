@@ -1,8 +1,14 @@
-import { courses } from '../data/courses';
+import { courses, type Course } from '../data/courses';
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
-export async function getCourses({ search = '', category = '', level = '' } = {}) {
+interface CourseFilters {
+  search?: string;
+  category?: string;
+  level?: string;
+}
+
+export async function getCourses({ search = '', category = '', level = '' }: CourseFilters = {}): Promise<Course[]> {
   await delay(300);
 
   let filtered = [...courses];
@@ -25,17 +31,17 @@ export async function getCourses({ search = '', category = '', level = '' } = {}
   return filtered;
 }
 
-export async function getCourseBySlug(slug) {
+export async function getCourseBySlug(slug: string): Promise<Course> {
   await delay(200);
   const course = courses.find((c) => c.slug === slug);
   if (!course) throw new Error('Course not found');
   return course;
 }
 
-export function getCategories() {
+export function getCategories(): string[] {
   return [...new Set(courses.map((c) => c.category))];
 }
 
-export function getLevels() {
+export function getLevels(): string[] {
   return [...new Set(courses.map((c) => c.level))];
 }

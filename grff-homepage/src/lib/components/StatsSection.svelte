@@ -1,5 +1,10 @@
-<script>
-  const stats = [
+<script lang="ts">
+  interface Stat {
+    value: string;
+    label: string;
+  }
+
+  const stats: Stat[] = [
     { value: '50+', label: 'Courses' },
     { value: '10K+', label: 'Students' },
     { value: '95%', label: 'Satisfaction' },

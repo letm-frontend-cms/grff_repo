@@ -1,7 +1,13 @@
-<script>
+<script lang="ts">
   import { BookOpen, Brain, BarChart3, Newspaper } from 'lucide-svelte';
 
-  const features = [
+  interface Feature {
+    title: string;
+    description: string;
+    icon: typeof BookOpen;
+  }
+
+  const features: Feature[] = [
     {
       title: 'Curated Courses',
       description: 'Industry-relevant courses designed for the next generation of developers.',
@@ -44,7 +50,7 @@
           class="rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-violet-500/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.18)] sm:p-7"
         >
           <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 sm:mb-6 sm:h-14 sm:w-14">
-            <svelte:component this={feature.icon} class="h-6 w-6 text-white sm:h-7 sm:w-7" />
+            <feature.icon class="h-6 w-6 text-white sm:h-7 sm:w-7" />
           </div>
 
           <h3 class="mb-3 text-xl font-semibold sm:mb-4 sm:text-2xl">{feature.title}</h3>

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import HeroSection from '$lib/components/HeroSection.svelte';
   import StatsSection from '$lib/components/StatsSection.svelte';
   import FeaturedCoursesSection from '$lib/components/FeaturedCoursesSection.svelte';

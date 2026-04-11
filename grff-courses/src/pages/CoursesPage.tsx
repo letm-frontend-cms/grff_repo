@@ -4,9 +4,10 @@ import { getCourses, getCategories, getLevels } from '../services/courseService'
 import { CourseCard } from '../components/CourseCard';
 import { EmptyState } from '../components/EmptyState';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import type { Course } from '../data/courses';
 
 export function CoursesPage() {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
@@ -22,7 +23,7 @@ export function CoursesPage() {
       .finally(() => setLoading(false));
   }, [search, category, level]);
 
-  function handleStartTest(course) {
+  function handleStartTest(course: Course) {
     alert(`Starting test for: ${course.title}`);
   }
 
@@ -60,7 +61,7 @@ export function CoursesPage() {
           <input
             type="text"
             value={search}
-            onInput={(e) => setSearch(e.target.value)}
+            onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
             placeholder="Search courses..."
             class="w-full rounded-xl border border-white/10 bg-white/5 py-3 pl-11 pr-4 text-sm text-white placeholder-gray-500 outline-none transition focus:border-violet-500/50 focus:ring-1 focus:ring-violet-500/50 sm:text-base"
           />

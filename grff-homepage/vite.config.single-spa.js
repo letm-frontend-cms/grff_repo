@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [tailwindcss(), svelte()],
   build: {
     lib: {
-      entry: 'src/single-spa-entry.js',
+      entry: 'src/single-spa-entry.ts',
       name: 'grff-homepage',
       fileName: 'grff-homepage',
       formats: ['system'],

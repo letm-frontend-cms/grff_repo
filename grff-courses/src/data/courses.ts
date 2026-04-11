@@ -1,4 +1,26 @@
-export const courses = [
+export interface Instructor {
+  name: string;
+  avatar: string;
+}
+
+export interface Course {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  level: string;
+  category: string;
+  duration: string;
+  lessons: number;
+  rating: number;
+  reviewsCount: number;
+  featured: boolean;
+  image: string;
+  instructor: Instructor;
+  hasTest: boolean;
+}
+
+export const courses: Course[] = [
   {
     id: 1,
     slug: 'react-typescript-masterclass',

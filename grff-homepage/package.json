@@ -8,7 +8,8 @@
 		"build": "vite build",
 		"build:single-spa": "vite build --config vite.config.single-spa.js",
 		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''"
+		"prepare": "svelte-kit sync || echo ''",
+		"typecheck": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",
@@ -16,7 +17,9 @@
 		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@tailwindcss/vite": "^4.2.2",
 		"svelte": "^5.54.0",
+		"svelte-check": "^4.4.6",
 		"tailwindcss": "^4.2.2",
+		"typescript": "^6.0.2",
 		"vite": "^7.3.1"
 	},
 	"dependencies": {

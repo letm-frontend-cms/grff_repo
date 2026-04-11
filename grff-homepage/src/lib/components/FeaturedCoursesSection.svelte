@@ -1,7 +1,13 @@
-<script>
+<script lang="ts">
   import { ChevronLeft, ChevronRight, Play } from 'lucide-svelte';
 
-  const courses = [
+  interface FeaturedCourse {
+    title: string;
+    image: string;
+    category: string;
+  }
+
+  const courses: FeaturedCourse[] = [
     {
       title: 'Full-Stack AI with Python',
       image:
@@ -28,7 +34,7 @@
     }
   ];
 
-  let scrollContainer;
+  let scrollContainer: HTMLDivElement;
 
   function scrollLeft() {
     scrollContainer?.scrollBy({ left: -320, behavior: 'smooth' });
@@ -62,7 +68,7 @@
 
       <div class="hidden items-center gap-3 md:flex">
         <button
-          on:click={scrollLeft}
+          onclick={scrollLeft}
           class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-violet-500/40 hover:bg-white/10 lg:h-12 lg:w-12"
           aria-label="Scroll left"
         >
@@ -70,7 +76,7 @@
         </button>
 
         <button
-          on:click={scrollRight}
+          onclick={scrollRight}
           class="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition hover:border-violet-500/40 hover:bg-white/10 lg:h-12 lg:w-12"
           aria-label="Scroll right"
         >

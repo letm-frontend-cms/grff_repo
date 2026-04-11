@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import { page, navigating } from '$app/stores';
 	import favicon from '$lib/assets/favicon.svg';
 	import '../app.css';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
-	let { children } = $props();
+	import type { Snippet } from 'svelte';
+	let { children }: { children: Snippet } = $props();
 </script>
 
 <svelte:head>

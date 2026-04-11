@@ -1,7 +1,9 @@
-<script>
-  let { size = 'md', label = 'Loading...' } = $props();
+<script lang="ts">
+  type SpinnerSize = 'sm' | 'md' | 'lg';
 
-  const sizes = {
+  let { size = 'md', label = 'Loading...' }: { size?: SpinnerSize; label?: string } = $props();
+
+  const sizes: Record<SpinnerSize, string> = {
     sm: 'h-5 w-5 border-2',
     md: 'h-8 w-8 border-[3px]',
     lg: 'h-12 w-12 border-4',

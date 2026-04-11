@@ -1,4 +1,17 @@
-export const courses = [
+export interface HomepageCourse {
+  id: number;
+  title: string;
+  description: string;
+  level: string;
+  category: string;
+  duration: string;
+  lessons: number;
+  progress: number;
+  cta: string;
+  featured: boolean;
+}
+
+export const courses: HomepageCourse[] = [
   {
     id: 1,
     title: 'React & TypeScript Masterclass',

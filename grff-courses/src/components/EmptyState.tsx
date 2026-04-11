@@ -1,10 +1,20 @@
-import { SearchX, BookX, AlertCircle } from 'lucide-preact';
+import { SearchX, BookX, AlertCircle, type LucideIcon } from 'lucide-preact';
 
-const icons = {
+type EmptyStateType = 'search' | 'courses' | 'error';
+
+const icons: Record<EmptyStateType, LucideIcon> = {
   search: SearchX,
   courses: BookX,
   error: AlertCircle,
 };
+
+interface EmptyStateProps {
+  type?: EmptyStateType;
+  title?: string;
+  description?: string;
+  actionLabel?: string;
+  onAction?: () => void;
+}
 
 export function EmptyState({
   type = 'courses',
@@ -12,7 +22,7 @@ export function EmptyState({
   description = "Try adjusting your search or filters to find what you're looking for.",
   actionLabel,
   onAction,
-}) {
+}: EmptyStateProps) {
   const Icon = icons[type] || icons.courses;
 
   return (

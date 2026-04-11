@@ -1,17 +1,23 @@
-<script>
+<script lang="ts">
   import { House, BookOpen, FileText, User, Menu, X } from 'lucide-svelte';
 
-  let { currentPath = window.location.pathname } = $props();
+  interface NavItem {
+    label: string;
+    icon: typeof House;
+    href: string;
+  }
+
+  let { currentPath = window.location.pathname }: { currentPath?: string } = $props();
   let isOpen = $state(false);
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { label: 'Home', icon: House, href: '/' },
     { label: 'Courses', icon: BookOpen, href: '/courses' },
     { label: 'Blogs', icon: FileText, href: '/blogs' },
     { label: 'Profile', icon: User, href: '/profile' }
   ];
 
-  function isActive(href) {
+  function isActive(href: string): boolean {
     if (href === '/') return currentPath === '/';
     return currentPath.startsWith(href);
   }
