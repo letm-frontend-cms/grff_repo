@@ -3,5 +3,26 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/profile-app/src",
-  "tags": ["scope:profile", "type:app"]
+  "tags": ["scope:profile", "type:app"],
+  "targets": {
+    "build": {
+      "command": "vite build",
+      "options": {
+        "cwd": "apps/profile-app"
+      },
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "serve": {
+      "command": "vite",
+      "options": {
+        "cwd": "apps/profile-app"
+      }
+    },
+    "preview": {
+      "command": "vite preview",
+      "options": {
+        "cwd": "apps/profile-app"
+      }
+    }
+  }
 }

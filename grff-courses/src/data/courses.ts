@@ -1,0 +1,120 @@
+export interface Instructor {
+  name: string;
+  avatar: string;
+}
+
+export interface Course {
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  level: string;
+  category: string;
+  duration: string;
+  lessons: number;
+  rating: number;
+  reviewsCount: number;
+  featured: boolean;
+  image: string;
+  instructor: Instructor;
+  hasTest: boolean;
+}
+
+export const courses: Course[] = [
+  {
+    id: 1,
+    slug: 'react-typescript-masterclass',
+    title: 'React & TypeScript Masterclass',
+    description: 'Build modern web apps with React 18 and TypeScript from scratch. Learn hooks, state management, and production patterns.',
+    level: 'Intermediate',
+    category: 'Frontend',
+    duration: '12h',
+    lessons: 24,
+    rating: 4.8,
+    reviewsCount: 342,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=900&q=80',
+    instructor: { name: 'Priya Sharma', avatar: 'https://i.pravatar.cc/150?u=priya' },
+    hasTest: true,
+  },
+  {
+    id: 2,
+    slug: 'nodejs-backend-development',
+    title: 'Node.js Backend Development',
+    description: 'Learn server-side JavaScript, REST APIs, authentication, and database integration with MongoDB and PostgreSQL.',
+    level: 'Intermediate',
+    category: 'Backend',
+    duration: '15h',
+    lessons: 30,
+    rating: 4.7,
+    reviewsCount: 278,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80',
+    instructor: { name: 'Rahul Verma', avatar: 'https://i.pravatar.cc/150?u=rahul' },
+    hasTest: true,
+  },
+  {
+    id: 3,
+    slug: 'python-data-science',
+    title: 'Python for Data Science',
+    description: 'Master Python with NumPy, Pandas, and machine learning fundamentals. Build real-world data pipelines.',
+    level: 'Beginner',
+    category: 'Data Science',
+    duration: '20h',
+    lessons: 40,
+    rating: 4.9,
+    reviewsCount: 512,
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80',
+    instructor: { name: 'Anita Desai', avatar: 'https://i.pravatar.cc/150?u=anita' },
+    hasTest: true,
+  },
+  {
+    id: 4,
+    slug: 'system-design-fundamentals',
+    title: 'System Design Fundamentals',
+    description: 'Learn to design scalable, reliable distributed systems. Covers load balancing, caching, and microservices.',
+    level: 'Advanced',
+    category: 'Architecture',
+    duration: '10h',
+    lessons: 18,
+    rating: 4.6,
+    reviewsCount: 189,
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80',
+    instructor: { name: 'Vikram Patel', avatar: 'https://i.pravatar.cc/150?u=vikram' },
+    hasTest: false,
+  },
+  {
+    id: 5,
+    slug: 'devops-cicd-pipeline',
+    title: 'DevOps & CI/CD Pipeline',
+    description: 'Docker, Kubernetes, GitHub Actions, and cloud deployment. Master the modern DevOps toolkit.',
+    level: 'Advanced',
+    category: 'DevOps',
+    duration: '14h',
+    lessons: 22,
+    rating: 4.5,
+    reviewsCount: 156,
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=900&q=80',
+    instructor: { name: 'Deepak Kumar', avatar: 'https://i.pravatar.cc/150?u=deepak' },
+    hasTest: true,
+  },
+  {
+    id: 6,
+    slug: 'javascript-algorithms-dsa',
+    title: 'JavaScript Algorithms & DSA',
+    description: 'Crack coding interviews with essential data structures and algorithms. 200+ practice problems included.',
+    level: 'Intermediate',
+    category: 'CS Fundamentals',
+    duration: '18h',
+    lessons: 35,
+    rating: 4.8,
+    reviewsCount: 423,
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=900&q=80',
+    instructor: { name: 'Sneha Iyer', avatar: 'https://i.pravatar.cc/150?u=sneha' },
+    hasTest: true,
+  },
+];

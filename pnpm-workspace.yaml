@@ -1,2 +1,6 @@
 packages:
+  - grff-homepage
+  - grff-courses
+  - auth-app
+  - backend
   - 'apps/*'
