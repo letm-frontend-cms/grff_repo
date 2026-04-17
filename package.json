@@ -27,5 +27,8 @@
   },
   "devDependencies": {
     "nx": "^22.5.4"
+  },
+  "dependencies": {
+    "single-spa": "^6.0.3"
   }
 }
