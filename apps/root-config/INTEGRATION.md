@@ -67,7 +67,15 @@ Current port assignments:
 | blog-app | 4201 |
 | profile-app | 4202 |
 
-### 6. Add a dev script to root `package.json`
+### 6. Add the route to `knownRoutes` in `src/main.ts`
+
+This is used by the 404 page. If the route isn't listed, users will see "Page not found":
+
+```ts
+const knownRoutes = ['/', '/courses', '/your-route'];
+```
+
+### 7. Add a dev script to root `package.json`
 
 ```json
 "dev:your-app": "pnpm --filter your-app dev"
