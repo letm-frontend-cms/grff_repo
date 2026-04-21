@@ -1,0 +1,5 @@
+@import "tailwind-design-system";
+
+@source "../../nav-app/src/**/*.tsx";
+@source "../../grff-homepage/src/**/*.svelte";
+@source "../../grff-courses/src/**/*.tsx";

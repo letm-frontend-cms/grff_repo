@@ -1,5 +1,5 @@
 {
-  "name": "root-config",
+  "name": "nav-app",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,13 +8,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "single-spa": "^6.0.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "tailwind-design-system": "^1.0.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
     "tailwindcss": "^4.2.2",
-    "typescript": "^5.0.0",
+    "typescript": "^5.9.3",
     "vite": "^6.4.2"
   }
 }
