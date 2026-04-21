@@ -23,7 +23,9 @@
     "build:auth": "pnpm --filter auth-app build",
     "build:all": "nx run-many --target=build",
     "dev:all": "nx run-many --target=dev",
-    "build:single-spa": "nx run-many --target=build:single-spa"
+    "build:single-spa": "nx run-many --target=build:single-spa",
+    "dev:root-config": "pnpm --filter root-config dev",
+    "dev:nav-app": "pnpm --filter nav-app dev"
   },
   "devDependencies": {
     "nx": "^22.5.4"
