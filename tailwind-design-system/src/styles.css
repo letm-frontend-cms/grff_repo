@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* Fonts */
+  --font-sans: 'DM Sans', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Border Radius */
+  --radius-sm: calc(0.75rem - 4px);
+  --radius-md: calc(0.75rem - 2px);
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Colors - HSL values from the reference */
+  --color-background: hsl(260 40% 5%);
+  --color-foreground: hsl(260 20% 92%);
+
+  --color-card: hsl(260 30% 9%);
+  --color-card-foreground: hsl(260 20% 92%);
+
+  --color-popover: hsl(260 30% 9%);
+  --color-popover-foreground: hsl(260 20% 92%);
+
+  --color-primary: hsl(239 84% 67%);
+  --color-primary-foreground: hsl(0 0% 100%);
+
+  --color-secondary: hsl(263 70% 50%);
+  --color-secondary-foreground: hsl(0 0% 100%);
+
+  --color-muted: hsl(260 20% 15%);
+  --color-muted-foreground: hsl(260 15% 55%);
+
+  --color-accent: hsl(270 60% 70%);
+  --color-accent-foreground: hsl(0 0% 100%);
+
+  --color-destructive: hsl(0 84% 60%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+
+  --color-border: hsl(260 20% 18%);
+  --color-input: hsl(260 20% 18%);
+  --color-ring: hsl(239 84% 67%);
+
+  --color-surface: hsl(260 25% 11%);
+  --color-surface-hover: hsl(260 25% 14%);
+
+  --color-neon-glow: hsl(239 84% 67%);
+  --color-neon-violet: hsl(263 70% 50%);
+
+  /* Sidebar */
+  --color-sidebar: hsl(260 30% 7%);
+  --color-sidebar-foreground: hsl(260 20% 92%);
+  --color-sidebar-primary: hsl(239 84% 67%);
+  --color-sidebar-primary-foreground: hsl(0 0% 100%);
+  --color-sidebar-accent: hsl(260 20% 15%);
+  --color-sidebar-accent-foreground: hsl(260 20% 92%);
+  --color-sidebar-border: hsl(260 20% 18%);
+  --color-sidebar-ring: hsl(239 84% 67%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+/* Base styles */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Utility classes */
+@utility glow-primary {
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--color-neon-glow) 30%, transparent),
+    0 0 60px color-mix(in srgb, var(--color-neon-glow) 10%, transparent);
+}
+
+@utility glass {
+  background: color-mix(in srgb, var(--color-card) 60%, transparent);
+  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+}
+
+@utility grid-pattern {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-border) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-border) 30%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 60px 60px;
+}
+
+@utility gradient-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-neon-violet));
+}
+
+@utility gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
