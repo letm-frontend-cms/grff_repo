@@ -1,0 +1,29 @@
+{
+  "name": "single-spa-host",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3020",
+    "build": "tsc -b && vite build",
+    "build:home-app": "vite build --config build/home-app.vite.config.ts",
+    "build:auth-app": "vite build --config build/auth-app.vite.config.ts",
+    "build:mf": "npm run build:home-app && npm run build:auth-app",
+    "preview": "vite preview --port 3020"
+  },
+  "dependencies": {
+    "grff-utils": "^1.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "single-spa": "^6.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.4",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.7",
+    "vite-plugin-css-injected-by-js": "^4.0.1"
+  }
+}

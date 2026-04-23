@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single SPA Host</title>
+    <link rel="icon" href="data:," />
+    <script>
+  window.process = {
+    env: {}
+  };
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.15.1/dist/system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.15.1/dist/extras/amd.min.js"></script>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "auth-app": "http://localhost:3000/spa/auth-app.js",
+          "home-app": "http://localhost:3002/spa/home-app.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
