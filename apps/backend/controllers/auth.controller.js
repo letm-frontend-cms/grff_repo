@@ -3,9 +3,9 @@ const { sendResponse } = require("../utils/response.util");
 
 const COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax",
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  secure: true, // Always true for cross-origin and production
+  sameSite: "none", // Required for cross-origin cookies
+  maxAge: 7 * 24 * 60 * 60 * 1000,
   path: "/",
 };
 
@@ -15,6 +15,7 @@ const COOKIE_OPTIONS = {
 const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    console.log("Signup request received:", { name, email });
     const result = await authService.signup({ name, email, password });
     return sendResponse(res, 201, true, result.message, {
       userId: result.userId,

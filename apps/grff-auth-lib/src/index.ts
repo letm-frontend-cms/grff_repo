@@ -1,6 +1,3 @@
-// Main auth library exports
-export function getSession() {}
-export function getSessionSync() {}
-export function logout() {}
-export function setSession() {}
-export function subscribe() {}
+export type { MinimalUser, SessionSubscriber, User } from "./types";
+export { getSessionSync, setSession, subscribe } from "./store";
+export { getSession, logout } from "./session";

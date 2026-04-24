@@ -2,7 +2,8 @@ import React from "react";
 import { createRoot, type Root } from "react-dom/client";
 import HomePage from "../src/components/HomePage";
 import "../src/app/globals.css";
-import { Header, Footer } from "grff-utils";
+import { Header } from '../src/components/Header';
+import { Footer } from '../src/components/Footer';
 
 let root: Root | null = null;
 

@@ -1,10 +1,12 @@
 "use client";
 
 import { createContext, useContext, ReactNode, useEffect } from "react";
-import type { User } from "grff-auth-lib";
-import { getSession, setSession } from "grff-auth-lib";
-import { useSession } from "grff-auth-lib/react";
+import type { User } from "@/lib/api";
+import { authApi, userApi } from "@/lib/api";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { API_URL } from '../../config'
+import { getSession, logout as logoutSession } from "grff-auth-lib";
 
 interface AuthContextType {
   user: User | null;
@@ -17,29 +19,51 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const { user, loading, logout: logoutSession } = useSession();
+  // Custom useSession logic
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    let mounted = true;
+    userApi.getProfile()
+      .then(res => {
+        if (mounted) setUser(res.data?.user ?? null);
+      })
+      .catch(() => {
+        if (mounted) setUser(null);
+      })
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+    return () => { mounted = false; };
+  }, []);
   const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      window.localStorage.setItem("GRFF_API_URL", process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api");
+      window.localStorage.setItem("GRFF_API_URL", API_URL);
     }
   }, []);
 
   const refreshUser = async () => {
-    await getSession();
+    try {
+      const res = await userApi.getProfile();
+      setUser(res.data?.user ?? null);
+    } catch {
+      setUser(null);
+    }
   };
 
-  const login = (_token: string, userData?: User) => {
+  const login = async (_token: string, userData?: User) => {
     if (userData) {
-      setSession(userData);
+      setUser(userData);
       return;
     }
-    void refreshUser();
+    await refreshUser();
   };
 
   const logout = async () => {
-    await logoutSession();
+    await authApi.logout();
+    setUser(null);
     router.push("/login");
   };
 
