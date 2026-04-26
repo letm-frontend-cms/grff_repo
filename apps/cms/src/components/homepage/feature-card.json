@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_homepage_feature_cards",
+  "info": {
+    "displayName": "Feature Card",
+    "description": "A single feature card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "iconName": {
+      "type": "enumeration",
+      "enum": ["BookOpen", "Brain", "BarChart3", "Newspaper"],
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_homepage_heroes",
+  "info": {
+    "displayName": "Hero",
+    "description": "Hero section of the homepage"
+  },
+  "options": {},
+  "attributes": {
+    "badgeText": {
+      "type": "string",
+      "required": true
+    },
+    "titleLine1": {
+      "type": "string",
+      "required": true
+    },
+    "titleHighlight": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "text",
+      "required": true
+    },
+    "primaryButtonText": {
+      "type": "string",
+      "required": true
+    },
+    "primaryButtonLink": {
+      "type": "string"
+    },
+    "secondaryButtonText": {
+      "type": "string",
+      "required": true
+    },
+    "secondaryButtonLink": {
+      "type": "string"
+    }
+  }
+}

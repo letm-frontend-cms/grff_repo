@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_homepage_features_sections",
+  "info": {
+    "displayName": "Features Section",
+    "description": "Features section header"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "sectionTitleHighlight": {
+      "type": "string",
+      "required": true
+    },
+    "sectionSubtitle": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
