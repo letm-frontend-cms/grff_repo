@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 
+const LOGIN_URL = '/login';
+
 interface NavItem {
   label: string;
   href: string;
@@ -45,20 +47,34 @@ function isActive(href: string, currentPath: string): boolean {
 export function Header() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
   const updatePath = useCallback(() => {
     setCurrentPath(window.location.pathname);
     setIsOpen(false);
   }, []);
 
+  const checkAuth = useCallback(() => {
+    setIsLoggedIn(!!localStorage.getItem('token'));
+  }, []);
+
+  const handleLogout = useCallback(() => {
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    window.dispatchEvent(new Event('storage'));
+    window.location.href = '/';
+  }, []);
+
   useEffect(() => {
     window.addEventListener('popstate', updatePath);
     window.addEventListener('single-spa:routing-event', updatePath);
+    window.addEventListener('storage', checkAuth);
     return () => {
       window.removeEventListener('popstate', updatePath);
       window.removeEventListener('single-spa:routing-event', updatePath);
+      window.removeEventListener('storage', checkAuth);
     };
-  }, [updatePath]);
+  }, [updatePath, checkAuth]);
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0a0614]/90 backdrop-blur-md">
@@ -91,9 +107,21 @@ export function Header() {
 
         {/* Desktop Button */}
         <div className="hidden md:block">
-          <button className="rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 px-5 py-2 text-sm font-medium text-white shadow-lg sm:px-6 sm:text-base">
-            Login
-          </button>
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="rounded-xl border border-white/10 bg-white/5 px-5 py-2 text-sm font-medium text-gray-300 transition hover:bg-white/10 hover:text-white sm:px-6 sm:text-base"
+            >
+              Logout
+            </button>
+          ) : (
+            <a
+              href={LOGIN_URL}
+              className="rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 px-5 py-2 text-sm font-medium text-white shadow-lg sm:px-6 sm:text-base"
+            >
+              Login
+            </a>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
@@ -126,9 +154,21 @@ export function Header() {
               </a>
             ))}
 
-            <button className="mt-2 rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 px-5 py-3 font-medium text-white shadow-lg">
-              Login
-            </button>
+            {isLoggedIn ? (
+              <button
+                onClick={handleLogout}
+                className="mt-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 font-medium text-gray-300 transition hover:bg-white/10 hover:text-white"
+              >
+                Logout
+              </button>
+            ) : (
+              <a
+                href={LOGIN_URL}
+                className="mt-2 block rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 px-5 py-3 text-center font-medium text-white shadow-lg"
+              >
+                Login
+              </a>
+            )}
           </div>
         </div>
       )}

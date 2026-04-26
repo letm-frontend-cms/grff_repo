@@ -1,6 +1,5 @@
-import { courses, type Course } from '../data/courses';
-
-const delay = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+import type { Course } from '../data/courses';
+import { request } from './api';
 
 interface CourseFilters {
   search?: string;
@@ -8,10 +7,17 @@ interface CourseFilters {
   level?: string;
 }
 
-export async function getCourses({ search = '', category = '', level = '' }: CourseFilters = {}): Promise<Course[]> {
-  await delay(300);
+let cachedCourses: Course[] = [];
 
-  let filtered = [...courses];
+export async function getCourses({ search = '', category = '', level = '' }: CourseFilters = {}): Promise<Course[]> {
+  try {
+    const res = await request<Course[]>('/courses');
+    cachedCourses = res.data || [];
+  } catch {
+    cachedCourses = [];
+  }
+
+  let filtered = [...cachedCourses];
 
   if (search) {
     const q = search.toLowerCase();
@@ -31,17 +37,18 @@ export async function getCourses({ search = '', category = '', level = '' }: Cou
   return filtered;
 }
 
-export async function getCourseBySlug(slug: string): Promise<Course> {
-  await delay(200);
-  const course = courses.find((c) => c.slug === slug);
-  if (!course) throw new Error('Course not found');
-  return course;
+export async function startCourse(courseId: number): Promise<void> {
+  await request(`/courses/${courseId}/start`, { method: 'POST' });
+}
+
+export async function completeCourse(courseId: number): Promise<void> {
+  await request(`/courses/${courseId}/complete`, { method: 'POST' });
 }
 
 export function getCategories(): string[] {
-  return [...new Set(courses.map((c) => c.category))];
+  return [...new Set(cachedCourses.map((c) => c.category))];
 }
 
 export function getLevels(): string[] {
-  return [...new Set(courses.map((c) => c.level))];
+  return [...new Set(cachedCourses.map((c) => c.level))];
 }

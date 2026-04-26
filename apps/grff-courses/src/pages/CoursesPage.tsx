@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect, useCallback } from 'preact/hooks';
 import { Search, X } from 'lucide-preact';
-import { getCourses, getCategories, getLevels } from '../services/courseService';
+import { getCourses, getCategories, getLevels, startCourse, completeCourse } from '../services/courseService';
 import { CourseCard } from '../components/CourseCard';
 import { EmptyState } from '../components/EmptyState';
 import { LoadingSpinner } from '../components/LoadingSpinner';
+import { useAuth } from '../hooks/useAuth';
 import type { Course } from '../data/courses';
 
 export function CoursesPage() {
@@ -12,19 +13,33 @@ export function CoursesPage() {
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('');
   const [level, setLevel] = useState('');
+  const { isAuthenticated } = useAuth();
 
   const categories = getCategories();
   const levels = getLevels();
 
-  useEffect(() => {
+  const fetchCourses = useCallback(() => {
     setLoading(true);
     getCourses({ search, category, level })
       .then(setCourses)
       .finally(() => setLoading(false));
   }, [search, category, level]);
 
-  function handleStartTest(course: Course) {
-    alert(`Starting test for: ${course.title}`);
+  useEffect(() => {
+    fetchCourses();
+  }, [fetchCourses]);
+
+  async function handleCourseAction(course: Course) {
+    try {
+      if (course.userStatus === 'in-progress') {
+        await completeCourse(course.id);
+      } else {
+        await startCourse(course.id);
+      }
+      fetchCourses();
+    } catch (err: any) {
+      alert(err.message || 'Something went wrong');
+    }
   }
 
   function clearFilters() {
@@ -143,7 +158,7 @@ export function CoursesPage() {
           </p>
           <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {courses.map((course) => (
-              <CourseCard key={course.id} course={course} onStartTest={handleStartTest} />
+              <CourseCard key={course.id} course={course} isAuthenticated={isAuthenticated} onAction={handleCourseAction} />
             ))}
           </div>
         </>
