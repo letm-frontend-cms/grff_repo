@@ -3,5 +3,8 @@ node_modules/
 build/
 dist/
 .cache/
+.strapi/
 public/uploads/
+types/
 .env
+.strapi-updater.json
