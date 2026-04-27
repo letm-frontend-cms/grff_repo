@@ -4,7 +4,7 @@ export interface Instructor {
 }
 
 export interface Course {
-  id: number;
+  _id: string;
   slug: string;
   title: string;
   description: string;

@@ -4,9 +4,19 @@ const APP_URLS: Record<string, string> = {
   navApp: import.meta.env.VITE_NAV_URL ?? 'http://localhost:9001',
   homepage: import.meta.env.VITE_HOMEPAGE_URL ?? 'http://localhost:5173',
   courses: import.meta.env.VITE_COURSES_URL ?? 'http://localhost:5174',
+  auth: import.meta.env.VITE_AUTH_URL ?? 'http://localhost:3000',
 };
 
-const knownRoutes = ['/', '/courses'];
+const AUTH_ROUTES = new Set([
+  '/login',
+  '/signup',
+  '/verify-email',
+  '/forgot-password',
+  '/reset-password',
+  '/dashboard',
+]);
+
+const knownRoutes = ['/', '/courses', ...AUTH_ROUTES];
 
 registerApplication({
   name: 'nav-app',
@@ -24,6 +34,12 @@ registerApplication({
   name: 'courses',
   app: () => import(/* @vite-ignore */ `${APP_URLS.courses}/src/single-spa-entry.ts`),
   activeWhen: (location) => location.pathname.startsWith('/courses'),
+});
+
+registerApplication({
+  name: 'auth-app',
+  app: () => import(/* @vite-ignore */ `${APP_URLS.auth}/spa/auth-app.esm.js`),
+  activeWhen: (location) => AUTH_ROUTES.has(location.pathname),
 });
 
 addErrorHandler((err) => {

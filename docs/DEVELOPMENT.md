@@ -10,7 +10,7 @@ grff_repo/
 │   ├── blog-app/        Svelte SPA — port 4201
 │   └── profile-app/     Svelte SPA — port 4202
 ├── auth-app/            Next.js app — port 3000
-└── backend/             Express API — port 5000
+└── backend/             Express API — port 5001
 ```
 
 ---
@@ -74,7 +74,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-### Backend API (port 5000)
+### Backend API (port 5001)
 
 ```bash
 cd backend

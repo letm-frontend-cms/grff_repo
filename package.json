@@ -27,7 +27,8 @@
     "dev:root-config": "pnpm --filter root-config dev",
     "dev:nav-app": "pnpm --filter nav-app dev",
     "dev:cms": "pnpm --filter cms dev",
-    "seed:cms": "pnpm --filter cms seed"
+    "seed:cms": "pnpm --filter cms seed",
+    "seed:courses": "pnpm --filter letm-grff-backend seed:courses"
   },
   "devDependencies": {
     "nx": "^22.5.4"

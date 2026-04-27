@@ -37,11 +37,11 @@ export async function getCourses({ search = '', category = '', level = '' }: Cou
   return filtered;
 }
 
-export async function startCourse(courseId: number): Promise<void> {
+export async function startCourse(courseId: string): Promise<void> {
   await request(`/courses/${courseId}/start`, { method: 'POST' });
 }
 
-export async function completeCourse(courseId: number): Promise<void> {
+export async function completeCourse(courseId: string): Promise<void> {
   await request(`/courses/${courseId}/complete`, { method: 'POST' });
 }
 

@@ -32,9 +32,9 @@ export function CoursesPage() {
   async function handleCourseAction(course: Course) {
     try {
       if (course.userStatus === 'in-progress') {
-        await completeCourse(course.id);
+        await completeCourse(course._id);
       } else {
-        await startCourse(course.id);
+        await startCourse(course._id);
       }
       fetchCourses();
     } catch (err: any) {
@@ -158,7 +158,7 @@ export function CoursesPage() {
           </p>
           <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {courses.map((course) => (
-              <CourseCard key={course.id} course={course} isAuthenticated={isAuthenticated} onAction={handleCourseAction} />
+              <CourseCard key={course._id} course={course} isAuthenticated={isAuthenticated} onAction={handleCourseAction} />
             ))}
           </div>
         </>
