@@ -2,6 +2,8 @@
   import { MOCK_PROFILE } from '../lib/mock-data';
   import StatCard from '../components/StatCard.svelte';
   import SkillBadge from '../components/SkillBadge.svelte';
+  import EnrolledCourses from '../components/EnrolledCourses.svelte';
+  import TestHistory from '../components/TestHistory.svelte';
 
   const profile = MOCK_PROFILE;
 </script>
@@ -52,4 +54,10 @@
       {/each}
     </div>
   </div>
+
+  <!-- Enrolled Courses -->
+  <EnrolledCourses courses={profile.enrolledCourses} />
+
+  <!-- Test History -->
+  <TestHistory tests={profile.testHistory} />
 </section>
