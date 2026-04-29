@@ -6,8 +6,8 @@ Single-domain shell host using Single-SPA orchestration.
 
 - Keeps user on one host domain (default: http://localhost:3020)
 - Uses `single-spa` route orchestration with `System.import(...)`
-- Registers apps by lifecycle name (`auth-app`, `home-app`) via import map
-- Auth routes (`/login`, `/signup`, `/verify-email`, `/forgot-password`, `/reset-password`, `/dashboard`) activate `auth-app`
+- Registers apps by lifecycle name (`grff-auth`, `home-app`) via import map
+- Auth routes (`/login`, `/signup`, `/verify-email`, `/forgot-password`, `/reset-password`, `/dashboard`) activate `grff-auth`
 - All other routes activate `home-app`
 
 ## Setup
@@ -19,7 +19,7 @@ Single-domain shell host using Single-SPA orchestration.
 3. Build real lifecycle bundles from app source:
    - `npm run build:mf`
 4. Ensure lifecycle bundles are reachable at:
-   - `http://localhost:3000/spa/auth-app.js`
+   - `http://localhost:3000/spa/grff-auth.js`
    - `http://localhost:3002/spa/home-app.js`
 
 ## Lifecycle contract for each app
