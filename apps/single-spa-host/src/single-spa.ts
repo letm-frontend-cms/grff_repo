@@ -27,8 +27,8 @@ function loadApp(moduleName: string): Promise<LifeCycles> {
 
 export function setupSingleSpa(): void {
   registerApplication({
-    name: "auth-app",
-    app: () => loadApp("auth-app"),
+    name: "grff-auth",
+    app: () => loadApp("grff-auth"),
     activeWhen: (location) => AUTH_ROUTES.has(location.pathname),
   });
 

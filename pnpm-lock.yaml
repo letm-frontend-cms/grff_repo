@@ -352,8 +352,8 @@ importers:
   apps/sample-homepage:
     dependencies:
       grff-auth-lib:
-        specifier: 1.0.1
-        version: 1.0.1(next@16.2.2(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.0.2
+        version: 1.0.2(next@16.2.2(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       next:
         specifier: 16.2.2
         version: 16.2.2(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -5736,13 +5736,6 @@ packages:
   grant@5.4.24:
     resolution: {integrity: sha512-PD5AvSI7wgCBDi2mEd6M/TIe+70c/fVc3Ik4B0s4mloWTy9J800eUEcxivOiyqSP9wvBy2QjWq1JR8gOfDMnEg==}
     engines: {node: '>=12.0.0'}
-
-  grff-auth-lib@1.0.1:
-    resolution: {integrity: sha512-aucFgJJGi67xZT60mc88dv0ShfmOg5jYeSMBYN9Z5wfZAeBlNbphjXaSlwccIp7n8lElyyLOyuk7Fhse5e3gUA==}
-    peerDependencies:
-      next: '>=14'
-      react: ^18 || ^19
-      react-dom: ^18 || ^19
 
   grff-auth-lib@1.0.2:
     resolution: {integrity: sha512-eIyGplR0lG8rbTwyXvYMqEZUjvQn9iywXuBnBkHH26bH271LBTGvg+C7jhyVNwQR6qVYacSNYtOqFBIOhxuCPg==}
@@ -15602,13 +15595,6 @@ snapshots:
       cookie-signature: 1.2.2
       jwk-to-pem: 2.0.7
       jws: 4.0.1
-
-  grff-auth-lib@1.0.1(next@16.2.2(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
-    dependencies:
-      grff-auth-lib: 1.0.2(next@16.2.2(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      next: 16.2.2(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      react: 19.2.4
-      react-dom: 19.2.4(react@19.2.4)
 
   grff-auth-lib@1.0.2(next@16.2.2(@opentelemetry/api@1.9.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4):
     dependencies:

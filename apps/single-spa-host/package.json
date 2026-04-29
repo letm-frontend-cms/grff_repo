@@ -7,8 +7,8 @@
     "dev": "vite --port 3020",
     "build": "tsc -b && vite build",
     "build:home-app": "vite build --config build/home-app.vite.config.ts",
-    "build:auth-app": "vite build --config build/auth-app.vite.config.ts",
-    "build:mf": "npm run build:home-app && npm run build:auth-app",
+    "build:grff-auth": "vite build --config build/grff-auth.vite.config.ts",
+    "build:mf": "npm run build:home-app && npm run build:grff-auth",
     "preview": "vite preview --port 3020"
   },
   "dependencies": {
