@@ -1,0 +1,58 @@
+{
+  "kind": "singleType",
+  "collectionName": "homepages",
+  "info": {
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "Homepage",
+    "description": "Homepage content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.hero",
+      "required": true
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.stat",
+      "required": true
+    },
+    "featuredCoursesSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.featured-courses-section",
+      "required": true
+    },
+    "featuredCourseCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.featured-course-card",
+      "required": true
+    },
+    "featuresSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.features-section",
+      "required": true
+    },
+    "featureCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "homepage.feature-card",
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "homepage.cta",
+      "required": true
+    }
+  }
+}

@@ -23,6 +23,7 @@
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
+		"@nitindhakad/strapisdk": "^1.0.2",
 		"lucide-svelte": "^1.0.1",
 		"tailwind-design-system": "^1.0.0"
 	}

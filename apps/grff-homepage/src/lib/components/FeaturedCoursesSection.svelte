@@ -1,38 +1,8 @@
 <script lang="ts">
   import { ChevronLeft, ChevronRight, Play } from 'lucide-svelte';
+  import type { FeaturedCoursesData } from '$lib/types/homepage';
 
-  interface FeaturedCourse {
-    title: string;
-    image: string;
-    category: string;
-  }
-
-  const courses: FeaturedCourse[] = [
-    {
-      title: 'Full-Stack AI with Python',
-      image:
-        'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80',
-      category: 'AI & Python'
-    },
-    {
-      title: 'Complete React and NextJS',
-      image:
-        'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=900&q=80',
-      category: 'Frontend'
-    },
-    {
-      title: 'Node.js Beginner to Advance',
-      image:
-        'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80',
-      category: 'Backend'
-    },
-    {
-      title: 'Docker and DevOps Essentials',
-      image:
-        'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?auto=format&fit=crop&w=900&q=80',
-      category: 'DevOps'
-    }
-  ];
+  let { featuredCourses }: { featuredCourses: FeaturedCoursesData } = $props();
 
   let scrollContainer: HTMLDivElement;
 
@@ -50,19 +20,18 @@
     <div class="mb-8 flex flex-col gap-6 sm:mb-10 md:flex-row md:items-start md:justify-between">
       <div class="max-w-3xl">
         <p class="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-violet-300 sm:text-sm">
-          Featured Courses
+          {featuredCourses.sectionLabel}
         </p>
 
         <h2 class="mb-4 text-3xl font-bold sm:text-4xl md:text-5xl">
-          Learn with premium
+          {featuredCourses.sectionTitle}
           <span class="bg-gradient-to-r from-violet-400 to-purple-500 bg-clip-text text-transparent">
-            course collections
+            {featuredCourses.sectionTitleHighlight}
           </span>
         </h2>
 
         <p class="text-base leading-7 text-gray-400 sm:text-lg sm:leading-8">
-          Explore curated learning paths designed to help students and developers build real-world
-          skills with modern technologies.
+          {featuredCourses.sectionSubtitle}
         </p>
       </div>
 
@@ -89,7 +58,7 @@
       bind:this={scrollContainer}
       class="flex gap-4 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-6"
     >
-      {#each courses as course}
+      {#each featuredCourses.cards as course}
         <article
           class="group min-w-[260px] max-w-[260px] rounded-3xl border border-white/10 bg-white/[0.03] p-3 transition duration-300 hover:-translate-y-1 hover:border-violet-500/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.16)] sm:min-w-[290px] sm:max-w-[290px] md:min-w-[320px] md:max-w-[320px] lg:min-w-[340px] lg:max-w-[340px]"
         >

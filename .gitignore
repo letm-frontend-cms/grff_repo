@@ -46,6 +46,12 @@ Thumbs.db
 package-lock.json
 yarn.lock
 
+# Strapi CMS
+apps/cms/.tmp/
+apps/cms/build/
+apps/cms/.cache/
+apps/cms/public/uploads/
+
 # Misc
 .pnpm-approve-builds
 *.log

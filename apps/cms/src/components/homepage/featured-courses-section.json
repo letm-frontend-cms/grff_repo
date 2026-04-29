@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_homepage_featured_courses_sections",
+  "info": {
+    "displayName": "Featured Courses Section",
+    "description": "Featured courses section header"
+  },
+  "options": {},
+  "attributes": {
+    "sectionLabel": {
+      "type": "string",
+      "required": true
+    },
+    "sectionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "sectionTitleHighlight": {
+      "type": "string",
+      "required": true
+    },
+    "sectionSubtitle": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

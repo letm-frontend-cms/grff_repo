@@ -1,15 +1,7 @@
 <script lang="ts">
-  interface Stat {
-    value: string;
-    label: string;
-  }
+  import type { StatData } from '$lib/types/homepage';
 
-  const stats: Stat[] = [
-    { value: '50+', label: 'Courses' },
-    { value: '10K+', label: 'Students' },
-    { value: '95%', label: 'Satisfaction' },
-    { value: '24/7', label: 'Access' }
-  ];
+  let { stats }: { stats: StatData[] } = $props();
 </script>
 
 <section class="border-y border-white/5 bg-[#070311] py-12 sm:py-16">

@@ -25,7 +25,9 @@
     "dev:all": "nx run-many --target=dev",
     "build:single-spa": "nx run-many --target=build:single-spa",
     "dev:root-config": "pnpm --filter root-config dev",
-    "dev:nav-app": "pnpm --filter nav-app dev"
+    "dev:nav-app": "pnpm --filter nav-app dev",
+    "dev:cms": "pnpm --filter cms dev",
+    "seed:cms": "pnpm --filter cms seed"
   },
   "devDependencies": {
     "nx": "^22.5.4"
