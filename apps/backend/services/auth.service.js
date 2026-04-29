@@ -15,7 +15,7 @@ const generateToken = (userId) => {
 /**
  * Signup – create user and send verification OTP
  */
-const signup = async ({ name, email, password }) => {
+const signup = async ({ name, email, password, username, location, bio, website, skills }) => {
   // Check if user already exists
   const existingUser = await User.findOne({ email });
   if (existingUser) {
@@ -28,7 +28,12 @@ const signup = async ({ name, email, password }) => {
   const user = await User.create({
     name,
     email,
+    username,
     password,
+    location,
+    bio,
+    website,
+    skills,
     otp,
     otpExpiry,
     isVerified: false,

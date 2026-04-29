@@ -1,0 +1,273 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.page {
+  width: min(1180px, calc(100% - 32px));
+  margin: 32px auto;
+}
+
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  padding: 16px 24px;
+  margin-bottom: 24px;
+}
+
+.nav-brand a {
+  color: #111827;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nav-links a,
+.dropdown-toggle {
+  color: #334155;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 10px 16px;
+  transition: all 160ms ease;
+}
+
+.nav-links a:hover,
+.dropdown-toggle:hover,
+.nav-links a.active {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+}
+
+.nav-links a.active {
+  box-shadow: inset 0 -2px 0 0 #3b82f6;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 240px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.12);
+  padding: 10px;
+  z-index: 20;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 10px 14px;
+  color: #334155;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background 160ms ease;
+}
+
+.dropdown-item:hover {
+  background: #f8fafc;
+}
+
+.dropdown-error,
+.dropdown-item.empty {
+  display: block;
+  padding: 10px 14px;
+  color: #b91c1c;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-user {
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  padding: 28px;
+}
+
+.form-card {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 18px;
+}
+
+.grid-list {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+button,
+.button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #4f46e5, #2563eb);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button.secondary,
+.button.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+button.danger,
+.button.danger {
+  background: #ef4444;
+}
+
+button:disabled,
+button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #f8fafc;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.card-footer,
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.error {
+  color: #b91c1c;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .header-row,
+  .header-actions,
+  .toolbar,
+  .card-footer,
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
