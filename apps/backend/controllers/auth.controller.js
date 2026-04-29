@@ -14,9 +14,8 @@ const COOKIE_OPTIONS = {
  */
 const signup = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    console.log("Signup request received:", { name, email });
-    const result = await authService.signup({ name, email, password });
+    const { name, email, password, username, location = "", bio = "", website = "", skills = [] } = req.body;
+    const result = await authService.signup({ name, email, password, username, location, bio, website, skills });
     return sendResponse(res, 201, true, result.message, {
       userId: result.userId,
     });

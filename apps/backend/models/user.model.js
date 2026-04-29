@@ -15,6 +15,17 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
+    username : {
+      type: String,
+      required: [true, "Username is required"],
+      unique: true,
+      lowercase: true,
+      trim: true,
+    },
+    skills: {
+      type: [String],
+      default: [],
+    },
     mobile: {
       type: String,
       trim: true,
@@ -31,27 +42,17 @@ const userSchema = new mongoose.Schema(
       enum: ["male", "female", "other", ""],
       default: "",
     },
-    address: {
+    bio : {
+      type: String,
+      trim: true,
+      default: ""
+    },
+    website : {
       type: String,
       trim: true,
       default: "",
     },
-    city: {
-      type: String,
-      trim: true,
-      default: "",
-    },
-    state: {
-      type: String,
-      trim: true,
-      default: "",
-    },
-    pincode: {
-      type: String,
-      trim: true,
-      default: "",
-    },
-    country: {
+    location : {
       type: String,
       trim: true,
       default: "",
@@ -59,6 +60,11 @@ const userSchema = new mongoose.Schema(
     isVerified: {
       type: Boolean,
       default: false,
+    },
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
     },
     otp: {
       type: String,

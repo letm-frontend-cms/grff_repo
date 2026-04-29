@@ -2,6 +2,7 @@ const { body } = require("express-validator");
 
 const signupValidation = [
   body("name").trim().notEmpty().withMessage("Name is required."),
+  body("username").trim().notEmpty().withMessage("Username is required."),
   body("email").isEmail().withMessage("Valid email is required.").normalizeEmail(),
   body("password")
     .isLength({ min: 6 })
