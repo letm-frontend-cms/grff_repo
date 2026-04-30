@@ -1,0 +1,157 @@
+############################################################
+#  GRFF Backend API – cURL cheat-sheet
+#  Base URL: http://localhost:5001
+############################################################
+
+# ─── AUTH ─────────────────────────────────────────────────
+
+# 1. Login (use the token/cookie from this for authenticated routes)
+curl -s -X POST http://localhost:5001/api/auth/login \
+  -H "Content-Type: application/json" \
+  -c cookies.txt \
+  -d '{
+    "email": "testcourse@grff.com",
+    "password": "password123"
+  }'
+
+# 2. Signup
+curl -s -X POST http://localhost:5001/api/auth/signup \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Test User",
+    "username": "testuser",
+    "email": "test@grff.com",
+    "password": "password123"
+  }'
+
+# 3. Verify Email
+curl -s -X POST http://localhost:5001/api/auth/verify-email \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@grff.com",
+    "otp": "123456"
+  }'
+
+# 4. Resend OTP
+curl -s -X POST http://localhost:5001/api/auth/resend-otp \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@grff.com"
+  }'
+
+# 5. Forgot Password
+curl -s -X POST http://localhost:5001/api/auth/forgot-password \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@grff.com"
+  }'
+
+# 6. Reset Password
+curl -s -X POST http://localhost:5001/api/auth/reset-password \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@grff.com",
+    "otp": "123456",
+    "newPassword": "newpassword123"
+  }'
+
+# 7. Logout
+curl -s -X POST http://localhost:5001/api/auth/logout \
+  -b cookies.txt
+
+
+# ─── SESSION (requires auth) ─────────────────────────────
+
+# 8. Get Current Session
+curl -s -X GET http://localhost:5001/api/session \
+  -b cookies.txt
+
+
+# ─── USER PROFILE (requires auth) ────────────────────────
+
+# 9. Get Profile
+curl -s -X GET http://localhost:5001/api/user/profile \
+  -b cookies.txt
+
+# 10. Update Profile
+curl -s -X PUT http://localhost:5001/api/user/profile \
+  -H "Content-Type: application/json" \
+  -b cookies.txt \
+  -d '{
+    "name": "Updated Name",
+    "mobile": "9876543210",
+    "gender": "male",
+    "address": "123 Main St",
+    "city": "Delhi",
+    "state": "Delhi",
+    "pincode": "110001",
+    "country": "India"
+  }'
+
+# 11. Change Password
+curl -s -X PUT http://localhost:5001/api/user/change-password \
+  -H "Content-Type: application/json" \
+  -b cookies.txt \
+  -d '{
+    "currentPassword": "password123",
+    "newPassword": "newpassword123"
+  }'
+
+# 12. Get User's Enrolled Courses
+curl -s -X GET http://localhost:5001/api/user/courses \
+  -b cookies.txt
+
+
+# ─── COURSES ─────────────────────────────────────────────
+
+# 13. Get All Courses (public, optional auth)
+curl -s -X GET http://localhost:5001/api/courses
+
+# 14. Start a Course (requires auth) — replace <courseId>
+curl -s -X POST http://localhost:5001/api/courses/<courseId>/start \
+  -b cookies.txt
+
+# 15. Complete a Course (requires auth) — replace <courseId>
+curl -s -X POST http://localhost:5001/api/courses/<courseId>/complete \
+  -b cookies.txt
+
+
+# ─── BLOGS ───────────────────────────────────────────────
+
+# 16. Get All Blogs (public)
+curl -s -X GET http://localhost:5001/api/blog
+
+# 17. Get Blog by ID (public) — replace <blogId>
+curl -s -X GET http://localhost:5001/api/blog/<blogId>
+
+# 18. Create Blog (requires auth + admin role)
+curl -s -X POST http://localhost:5001/api/blog \
+  -H "Content-Type: application/json" \
+  -b cookies.txt \
+  -d '{
+    "title": "My First Blog",
+    "slug": "my-first-blog",
+    "content": "This is the blog content.",
+    "tag": "tech"
+  }'
+
+# 19. Update Blog (requires auth + admin role) — replace <blogId>
+curl -s -X PUT http://localhost:5001/api/blog/<blogId> \
+  -H "Content-Type: application/json" \
+  -b cookies.txt \
+  -d '{
+    "title": "Updated Blog Title",
+    "slug": "updated-blog-title",
+    "content": "Updated content.",
+    "tag": "updated-tag"
+  }'
+
+# 20. Delete Blog (requires auth + admin role) — replace <blogId>
+curl -s -X DELETE http://localhost:5001/api/blog/<blogId> \
+  -b cookies.txt
+
+
+# ─── HEALTH CHECK ────────────────────────────────────────
+
+# 21. Health Check
+curl -s -X GET http://localhost:5001/
