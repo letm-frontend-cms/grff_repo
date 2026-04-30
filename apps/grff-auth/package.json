@@ -1,5 +1,5 @@
 {
-  "name": "auth-app",
+  "name": "grff-auth",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,7 @@
     "build:spa:esm": "vite build --config spa/build-esm.vite.config.ts"
   },
   "dependencies": {
-    "grff-auth-lib": "file:../grff-auth-lib",
+    "grff-auth-lib": "1.0.2",
     "next": "16.2.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -30,3 +30,4 @@
     "vite": "^7.0.0"
   }
 }
+

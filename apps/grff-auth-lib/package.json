@@ -1,6 +1,6 @@
 {
   "name": "grff-auth-lib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "private": false,
@@ -30,8 +30,5 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "typescript": "^5.9.3"
-  },
-  "dependencies": {
-    "grff-auth-lib": "^1.0.0"
   }
 }

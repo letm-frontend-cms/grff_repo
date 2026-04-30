@@ -2,6 +2,10 @@
   "name": "grff",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@latest",
+  "engines": {
+    "node": ">=18 <=22"
+  },
   "type": "module",
   "pnpm": {
     "onlyBuiltDependencies": [

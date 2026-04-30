@@ -13,18 +13,17 @@ const getProfile = async (userId) => {
 
 /**
  * Update user profile
- * Allowed fields: name, mobile, gender, address, city, state, pincode, country
+ * Allowed fields: name, mobile, gender, location, bio, website, skills
  */
 const updateProfile = async (userId, updateData) => {
   const allowedFields = [
     "name",
     "mobile",
     "gender",
-    "address",
-    "city",
-    "state",
-    "pincode",
-    "country",
+    "location",
+    "bio",
+    "website",
+    "skills",
   ];
 
   // Filter only allowed fields

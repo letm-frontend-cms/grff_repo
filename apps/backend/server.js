@@ -17,6 +17,10 @@ const allowedOrigins = [
   "http://localhost:9001", // nav-app
   "http://localhost:5173", // grff-homepage
   "http://localhost:5174", // grff-courses
+  "http://localhost:4321",
+  "https://grff-mm-production.up.railway.app",
+  "https://grff-dwzp1keky-ankits-projects-9297b5c9.vercel.app",
+  "https://grff-repo-grff-auth-kf2k.vercel.app"
 ];
 app.use(
   cors({
@@ -28,7 +32,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ---------- Routes ----------
 app.use("/api", routes);
 
 // Health check
