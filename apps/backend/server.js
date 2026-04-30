@@ -15,7 +15,8 @@ const allowedOrigins = [
   "http://localhost:3020",
   "http://localhost:4321",
   "https://grff-mm-production.up.railway.app",
-  "https://grff-dwzp1keky-ankits-projects-9297b5c9.vercel.app"
+  "https://grff-dwzp1keky-ankits-projects-9297b5c9.vercel.app",
+  "https://grff-repo-grff-auth-kf2k.vercel.app"
 ];
 app.use(
   cors({
