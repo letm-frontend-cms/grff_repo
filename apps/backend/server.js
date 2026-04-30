@@ -13,6 +13,10 @@ const allowedOrigins = [
   "http://localhost:3002",
   "http://localhost:3010",
   "http://localhost:3020",
+  "http://localhost:9000", // root-config
+  "http://localhost:9001", // nav-app
+  "http://localhost:5173", // grff-homepage
+  "http://localhost:5174", // grff-courses
   "http://localhost:4321",
   "https://grff-mm-production.up.railway.app",
   "https://grff-dwzp1keky-ankits-projects-9297b5c9.vercel.app",
@@ -47,7 +51,7 @@ app.use((err, _req, res, _next) => {
 });
 
 // ---------- Start Server ----------
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 connectDB().then(() => {
   app.listen(PORT, () => {

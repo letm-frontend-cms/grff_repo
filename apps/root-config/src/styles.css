@@ -5,3 +5,5 @@
 @source "../../nav-app/src/**/*.tsx";
 @source "../../grff-homepage/src/**/*.svelte";
 @source "../../grff-courses/src/**/*.tsx";
+@source "../../grff-auth/src/**/*.tsx";
+@source "../../grff-auth/spa/**/*.tsx";

@@ -18,20 +18,21 @@
   "scripts": {
     "dev:homepage": "pnpm --filter grff-homepage dev",
     "dev:courses": "pnpm --filter grff-courses dev",
-    "dev:auth": "pnpm --filter auth-app dev",
+    "dev:auth": "pnpm --filter grff-auth dev",
     "dev:backend": "pnpm --filter letm-grff-backend dev",
     "blog": "nx serve blog-app",
     "profile": "nx serve profile-app",
     "build:homepage": "pnpm --filter grff-homepage build",
     "build:courses": "pnpm --filter grff-courses build",
-    "build:auth": "pnpm --filter auth-app build",
+    "build:auth": "pnpm --filter grff-auth build",
     "build:all": "nx run-many --target=build",
     "dev:all": "nx run-many --target=dev",
     "build:single-spa": "nx run-many --target=build:single-spa",
     "dev:root-config": "pnpm --filter root-config dev",
     "dev:nav-app": "pnpm --filter nav-app dev",
     "dev:cms": "pnpm --filter cms dev",
-    "seed:cms": "pnpm --filter cms seed"
+    "seed:cms": "pnpm --filter cms seed",
+    "seed:courses": "pnpm --filter letm-grff-backend seed:courses"
   },
   "devDependencies": {
     "nx": "^22.5.4"
