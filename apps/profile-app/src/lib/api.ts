@@ -1,15 +1,10 @@
 // Centralized API calls for the Profile microfrontend
 
-// Hardcoded token for development purposes (should ideally be moved to an environment variable or auth context)
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjE5YWFlNWUwYTliN2Y4ODIzMGU1NyIsImlhdCI6MTc3NzQ0MTUyMCwiZXhwIjoxNzc4MDQ2MzIwfQ.6njB7vwmgTIav-W4SzEaDO8QjrYYmcixCQ3Vjxr3JL8";
-
 const defaultHeaders = {
-  Authorization: `Bearer ${TOKEN}`,
   "Content-Type": "application/json",
 };
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5001';
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
 export const api = {
   /**
@@ -37,6 +32,7 @@ export const api = {
     const response = await fetch(`${API_BASE}/api/user/profile`, {
       method: "PUT",
       headers: defaultHeaders,
+      credentials: "include",
       body: JSON.stringify(payload),
     });
 
@@ -50,6 +46,7 @@ export const api = {
   async getUserCourses() {
     const response = await fetch(`${API_BASE}/api/user/courses`, {
       headers: defaultHeaders,
+      credentials: "include",
     });
     return response.json();
   },
@@ -60,6 +57,7 @@ export const api = {
   async getUserTestHistory() {
     const response = await fetch(`${API_BASE}/api/user/tests`, {
       headers: defaultHeaders,
+      credentials: "include",
     });
     return response.json();
   },
