@@ -1,0 +1,28 @@
+{
+  "name": "blog-admin-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/blog-admin-app/src",
+  "tags": ["scope:blog-admin", "type:app"],
+  "targets": {
+    "build": {
+      "command": "vite build",
+      "options": {
+        "cwd": "apps/blog-admin-app"
+      },
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "serve": {
+      "command": "vite",
+      "options": {
+        "cwd": "apps/blog-admin-app"
+      }
+    },
+    "preview": {
+      "command": "vite preview",
+      "options": {
+        "cwd": "apps/blog-admin-app"
+      }
+    }
+  }
+}
