@@ -6,10 +6,10 @@
 <div class="min-h-screen bg-background text-foreground">
   <header class="border-b border-border bg-surface px-6 py-4">
     <div class="mx-auto flex max-w-3xl items-center justify-between">
-      <a href="/#/" class="text-xl font-bold text-primary">GRFF Profile</a>
+      <a href="/profile-app/#/" class="text-xl font-bold text-primary">GRFF Profile</a>
       <nav class="flex gap-4 text-sm">
-        <a href="/#/" class="text-muted-foreground hover:text-foreground transition-colors">My Profile</a>
-        <a href="/#/settings" class="text-muted-foreground hover:text-foreground transition-colors">Settings</a>
+        <a href="/profile-app/#/" class="text-muted-foreground hover:text-foreground transition-colors">My Profile</a>
+        <a href="/profile-app/#/settings" class="text-muted-foreground hover:text-foreground transition-colors">Settings</a>
       </nav>
     </div>
   </header>
