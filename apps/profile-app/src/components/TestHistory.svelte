@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TestResult } from '../lib/mock-data';
+  import type { TestResult } from '../lib/types';
 
   export let tests: TestResult[] = [];
 </script>

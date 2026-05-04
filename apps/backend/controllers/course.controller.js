@@ -1,5 +1,6 @@
 const Course = require("../models/course.model");
 const UserCourseProgress = require("../models/userCourseProgress.model");
+const TestResult = require("../models/testResult.model");
 const { sendResponse } = require("../utils/response.util");
 
 const getCourses = async (req, res) => {
@@ -123,4 +124,58 @@ const getUserCourses = async (req, res) => {
   }
 };
 
-module.exports = { getCourses, startCourse, completeCourse, getUserCourses };
+const submitTestResult = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const courseId = req.params.id;
+    const { score, maxScore } = req.body;
+
+    if (score === undefined || maxScore === undefined) {
+      return sendResponse(res, 400, false, "score and maxScore are required.");
+    }
+
+    const course = await Course.findById(courseId);
+    if (!course) {
+      return sendResponse(res, 404, false, "Course not found.");
+    }
+
+    const passed = score >= (maxScore * 0.6); // 60% passing criteria
+
+    const testResult = await TestResult.create({
+      userId,
+      courseId,
+      score,
+      maxScore,
+      passed,
+    });
+
+    return sendResponse(res, 201, true, "Test result submitted.", testResult);
+  } catch (error) {
+    return sendResponse(res, 500, false, error.message || "Failed to submit test result.");
+  }
+};
+
+const getUserTests = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const tests = await TestResult.find({ userId })
+      .populate("courseId")
+      .lean();
+
+    const formattedTests = tests.map(t => ({
+      id: t._id,
+      courseId: t.courseId ? t.courseId._id : null,
+      courseTitle: t.courseId ? t.courseId.title : "Unknown Course",
+      score: t.score,
+      maxScore: t.maxScore,
+      passed: t.passed,
+      date: t.createdAt
+    }));
+
+    return sendResponse(res, 200, true, "User tests fetched.", formattedTests);
+  } catch (error) {
+    return sendResponse(res, 500, false, error.message || "Failed to fetch user tests.");
+  }
+};
+
+module.exports = { getCourses, startCourse, completeCourse, getUserCourses, submitTestResult, getUserTests };
