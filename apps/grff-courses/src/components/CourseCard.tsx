@@ -1,12 +1,46 @@
-import { Clock, BookOpen, Star, FlaskConical } from 'lucide-preact';
+import { Clock, BookOpen, Star, Play, CheckCircle } from 'lucide-preact';
 import type { Course } from '../data/courses';
 
 interface CourseCardProps {
   course: Course;
-  onStartTest?: (course: Course) => void;
+  isAuthenticated: boolean;
+  onAction?: (course: Course) => void;
 }
 
-export function CourseCard({ course, onStartTest }: CourseCardProps) {
+export function CourseCard({ course, isAuthenticated, onAction }: CourseCardProps) {
+  const status = course.userStatus;
+
+  function renderButton() {
+    if (status === 'completed') {
+      return (
+        <span class="flex items-center gap-1.5 rounded-lg bg-green-500/20 px-3 py-1.5 text-xs font-medium text-green-400">
+          <CheckCircle class="h-3.5 w-3.5" />
+          Completed
+        </span>
+      );
+    }
+
+    const label = status === 'in-progress' ? 'Complete Course' : 'Start Course';
+
+    return (
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (!isAuthenticated) {
+            window.location.href = `/login?redirect=${encodeURIComponent(window.location.pathname)}`;
+            return;
+          }
+          onAction?.(course);
+        }}
+        class="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-violet-500 to-purple-600 px-3 py-1.5 text-xs font-medium text-white transition hover:shadow-lg hover:shadow-violet-500/25"
+      >
+        <Play class="h-3.5 w-3.5" />
+        {label}
+      </button>
+    );
+  }
+
   return (
     <a
       href={`/courses/${course.slug}`}
@@ -61,19 +95,7 @@ export function CourseCard({ course, onStartTest }: CourseCardProps) {
             <span class="text-xs text-gray-400">{course.instructor.name}</span>
           </div>
 
-          {course.hasTest && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                onStartTest?.(course);
-              }}
-              class="flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-violet-500 to-purple-600 px-3 py-1.5 text-xs font-medium text-white transition hover:shadow-lg hover:shadow-violet-500/25"
-            >
-              <FlaskConical class="h-3.5 w-3.5" />
-              Start Test
-            </button>
-          )}
+          {renderButton()}
         </div>
       </div>
     </a>
