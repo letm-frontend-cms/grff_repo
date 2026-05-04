@@ -24,4 +24,7 @@ router.put("/change-password", changePasswordValidation, validate, userControlle
 // GET /api/user/courses
 router.get("/courses", courseController.getUserCourses);
 
+// GET /api/user/tests
+router.get("/tests", courseController.getUserTests);
+
 module.exports = router;

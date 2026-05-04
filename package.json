@@ -20,6 +20,7 @@
     "dev:courses": "pnpm --filter grff-courses dev",
     "dev:auth": "pnpm --filter grff-auth dev",
     "dev:backend": "pnpm --filter letm-grff-backend dev",
+    "dev:profile": "pnpm --filter profile-app dev",
     "blog": "nx serve blog-app",
     "profile": "nx serve profile-app",
     "build:homepage": "pnpm --filter grff-homepage build",
