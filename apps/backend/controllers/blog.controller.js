@@ -1,6 +1,23 @@
 const blogService = require("../services/blog.service");
 const { sendResponse } = require("../utils/response.util");
 
+const sseClients = [];
+
+const sendSseEvent = (res, event, data) => {
+  res.write(`event: ${event}\n`);
+  res.write(`data: ${JSON.stringify(data)}\n\n`);
+};
+
+const broadcastSseEvent = (event, data) => {
+  sseClients.forEach((res) => {
+    try {
+      sendSseEvent(res, event, data);
+    } catch (err) {
+      console.error("SSE broadcast failed:", err);
+    }
+  });
+};
+
 const getAllBlogs = async (req, res) => {
   try {
     const blogs = await blogService.getAllBlogs();
@@ -32,11 +49,30 @@ const createBlog = async (req, res) => {
       authorId: req.user._id,
       authorName: req.user.name || req.user.email,
     });
+    broadcastSseEvent("blog-created", blog);
     return sendResponse(res, 201, true, "Blog created successfully.", { blog });
   } catch (error) {
     const status = error.status || 500;
     return sendResponse(res, status, false, error.message || "Failed to create blog.");
   }
+};
+
+const streamBlogs = async (req, res) => {
+  res.writeHead(200, {
+    "Content-Type": "text/event-stream",
+    "Cache-Control": "no-cache",
+    Connection: "keep-alive",
+  });
+
+  res.write(`: connected\n\n`);
+  sseClients.push(res);
+
+  req.on("close", () => {
+    const index = sseClients.indexOf(res);
+    if (index !== -1) {
+      sseClients.splice(index, 1);
+    }
+  });
 };
 
 const updateBlog = async (req, res) => {
@@ -69,6 +105,7 @@ module.exports = {
   getAllBlogs,
   getBlogById,
   createBlog,
+  streamBlogs,
   updateBlog,
   deleteBlog,
 };
