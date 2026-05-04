@@ -18,6 +18,7 @@ const getProfile = async (userId) => {
 const updateProfile = async (userId, updateData) => {
   const allowedFields = [
     "name",
+    "username",
     "mobile",
     "gender",
     "location",

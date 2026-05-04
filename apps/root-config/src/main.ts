@@ -5,6 +5,7 @@ const APP_URLS: Record<string, string> = {
   homepage: import.meta.env.VITE_HOMEPAGE_URL ?? 'http://localhost:5173',
   courses: import.meta.env.VITE_COURSES_URL ?? 'http://localhost:5174',
   auth: import.meta.env.VITE_AUTH_URL ?? 'http://localhost:3000',
+  profile: import.meta.env.VITE_PROFILE_URL ?? 'http://localhost:4202',
 };
 
 const AUTH_ROUTES = new Set([
@@ -16,7 +17,7 @@ const AUTH_ROUTES = new Set([
   '/dashboard',
 ]);
 
-const knownRoutes = ['/', '/courses', ...AUTH_ROUTES];
+const knownRoutes = ['/', '/courses', '/profile', '/settings', ...AUTH_ROUTES];
 
 registerApplication({
   name: 'nav-app',
@@ -40,6 +41,12 @@ registerApplication({
   name: 'auth-app',
   app: () => import(/* @vite-ignore */ `${APP_URLS.auth}/spa/auth-app.esm.js`),
   activeWhen: (location) => AUTH_ROUTES.has(location.pathname),
+});
+
+registerApplication({
+  name: 'profile-app',
+  app: () => import(/* @vite-ignore */ `${APP_URLS.profile}/src/single-spa-entry.ts`),
+  activeWhen: (location) => location.pathname.startsWith('/profile') || location.pathname.startsWith('/settings'),
 });
 
 addErrorHandler((err) => {
