@@ -4,7 +4,7 @@
 </script>
 
 <div class="flex min-h-screen flex-col bg-background text-foreground">
-  <header class="border-b border-border bg-surface px-6 py-4">
+  <!-- <header class="border-b border-border bg-surface px-6 py-4">
     <div class="mx-auto flex max-w-3xl items-center justify-between">
       <a href="/profile-app/#/" class="text-xl font-bold text-primary">GRFF Profile</a>
       <nav class="flex gap-4 text-sm">
@@ -12,7 +12,7 @@
         <a href="/profile-app/#/settings" class="text-muted-foreground hover:text-foreground transition-colors">Settings</a>
       </nav>
     </div>
-  </header>
+  </header> -->
 
   <main class="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
     <Router {routes} />
