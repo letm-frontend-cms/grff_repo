@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "single-spa": "^6.0.0",
     "svelte": "^5.0.0",
     "svelte-spa-router": "^4.0.1",
     "tailwind-design-system": "^1.0.0"
