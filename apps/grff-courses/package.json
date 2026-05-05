@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "grff-auth-lib": "file:../grff-auth-lib",
+    "grff-auth-lib": "1.0.2",
     "lucide-preact": "^0.417.0",
     "preact": "^10.29.0",
     "preact-router": "^4.1.2",

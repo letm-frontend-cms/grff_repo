@@ -5,6 +5,7 @@ const auth = require("../middlewares/auth.middleware");
 const { authorizeRoles } = require("../middlewares/role.middleware");
 
 router.get("/", blogController.getAllBlogs);
+router.get("/stream", blogController.streamBlogs);
 router.get("/:id", blogController.getBlogById);
 router.post("/", auth, authorizeRoles("admin"), blogController.createBlog);
 router.put("/:id", auth, authorizeRoles("admin"), blogController.updateBlog);

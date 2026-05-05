@@ -34,7 +34,7 @@ function getReadTime(text: string) {
   return `${minutes} min read`;
 }
 
-export default function BlogsSection() {
+export default function BlogsSectionUsageExample() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -46,9 +46,7 @@ export default function BlogsSection() {
     const fetchBlogs = async () => {
       try {
         const response = await fetch(BLOG_API_URL, {
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
         });
 
         if (!response.ok) {
@@ -64,9 +62,7 @@ export default function BlogsSection() {
         if (!mounted) return;
         setError("Unable to load blogs at the moment.");
       } finally {
-        if (mounted) {
-          setLoading(false);
-        }
+        if (mounted) setLoading(false);
       }
     };
 
@@ -98,9 +94,7 @@ export default function BlogsSection() {
 
     return () => {
       mounted = false;
-      if (source) {
-        source.close();
-      }
+      if (source) source.close();
     };
   }, []);
 
@@ -115,8 +109,7 @@ export default function BlogsSection() {
             Latest <span className="gradient-text">Blogs</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Technical deep dives, tutorials, and lessons learned while building
-            this platform.
+            This component fetches blogs from the API and updates live via SSE.
           </p>
         </div>
 

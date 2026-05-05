@@ -8,24 +8,25 @@ const routes = require("./routes");
 const app = express();
 
 // ---------- Middleware ----------
-const allowedOrigins = [
-  "http://localhost:3000",
-  "http://localhost:3002",
-  "http://localhost:3010",
-  "http://localhost:3020",
-  "http://localhost:9000", // root-config
-  "http://localhost:9001", // nav-app
-  "http://localhost:5173", // grff-homepage
-  "http://localhost:5174", // grff-courses
-  "http://localhost:4202", // profile-app
-  "http://localhost:4321",
-  "https://grff-mm-production.up.railway.app",
-  "https://grff-dwzp1keky-ankits-projects-9297b5c9.vercel.app",
-  "https://grff-repo-grff-auth-kf2k.vercel.app"
-];
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"
+  );
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+  next();
+});
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: true,
     credentials: true,
   })
 );
