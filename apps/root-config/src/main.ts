@@ -9,6 +9,16 @@ const APP_URLS: Record<string, string> = {
   blogApp: import.meta.env.VITE_BLOG_URL ?? 'http://localhost:4201',
 };
 
+// const APP_URLS: Record<string, string> = {
+//   navApp: import.meta.env.VITE_NAV_URL ?? 'https://grff-nav-app.vercel.app',
+//   homepage: import.meta.env.VITE_HOMEPAGE_URL ?? 'https://grff-homepage-5l0zcwnae-ankits-projects-9297b5c9.vercel.app',
+//   courses: import.meta.env.VITE_COURSES_URL ?? 'https://grff-grff-courses-ave4ymy47-ankits-projects-9297b5c9.vercel.app',
+//   auth: import.meta.env.VITE_AUTH_URL ?? 'https://grff-auth-app.vercel.app',
+//   profile: import.meta.env.VITE_PROFILE_URL ?? 'https://grff-repo-profile-app.vercel.app',
+//   blogApp: import.meta.env.VITE_BLOG_URL ?? 'https://grff-blog-app.vercel.app',
+// };
+
+console.log('App URLs:', APP_URLS);
 const AUTH_ROUTES = new Set([
   '/login',
   '/signup',
