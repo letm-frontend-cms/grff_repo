@@ -11,6 +11,16 @@ export default defineConfig({
     port: 4201,
     cors: true,
     proxy: {
+      "/api/blog/stream": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        configure: (proxy) => {
+          proxy.on("proxyRes", (proxyRes) => {
+            proxyRes.headers["x-accel-buffering"] = "no";
+            proxyRes.headers["cache-control"] = "no-cache";
+          });
+        },
+      },
       "/api": {
         target: "http://localhost:5000",
         changeOrigin: true,
