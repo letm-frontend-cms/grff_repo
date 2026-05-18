@@ -1,7 +1,5 @@
 // Centralized API URL config
-// export const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://grff-dwzp1keky-ankits-projects-9297b5c9.vercel.app/api" || "http://localhost:5000/api";
-// export const API_URL = "http://localhost:5000/api";
-export const API_URL = "https://grff-mm.vercel.app/api";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001/api";
 
 // Auth helpers from grff-auth-lib
 // (Make sure grff-auth-lib is installed in your project)

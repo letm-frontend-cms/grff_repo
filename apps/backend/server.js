@@ -7,9 +7,18 @@ const routes = require("./routes");
 
 const app = express();
 
-// ---------- Middleware ----------
+const corsOptions = {
+  origin: true,
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  const origin = req.get("Origin");
+  if (origin) {
+    res.header("Access-Control-Allow-Origin", origin);
+    res.header("Vary", "Origin");
+  }
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
@@ -19,17 +28,16 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS"
   );
+
   if (req.method === "OPTIONS") {
     return res.sendStatus(204);
   }
+
   next();
 });
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
