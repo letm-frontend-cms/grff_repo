@@ -1,0 +1,1 @@
+cd tailwind-design-system && pnpm run prettier
